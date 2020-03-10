@@ -1,0 +1,85 @@
+$branco: #ffffff;
+$preto: #000000;
+$lista-de-cores: ('flame': #F2552C, 'greenary': #92B558, 'marina': #4F84C4, 'primrose-yellow': #F6D155, 'neutral-gray': #898E8C, 'shaded-spruce': #005960, 'navy-peony': #223A5E, 'tawny-port': #672E3B, 'white': $branco, 'black': $preto);
+
+@mixin imprimir-cores($lista, $cor-texto)
+    @each $nome, $cor in $lista
+        .#{$nome}, .hover-#{$nome}:hover
+            background-color: $cor !important;
+            
+            @if $cor == $branco
+                color: $preto !important;        
+            @else if $cor == $preto
+                color: $branco !important;
+            @else
+                color: $cor-texto !important;
+            
+
+@mixin imprimir-texto-bordas($lista)
+    @each $nome, $cor in $lista
+        .text-#{$nome}, .text-hover-#{$nome}:hover
+            color: $cor !important;
+        
+        .border-#{$nome}, .border-hover-#{$nome}:hover
+            border-color: $cor !important;
+         
+    
+
+@include imprimir-cores($lista-de-cores, $branco);
+@include imprimir-texto-bordas($lista-de-cores);
+
+    
+
+* 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+p 
+    text-align: justify;
+    text-indent: 25px;
+
+footer
+    text-align: center;
+
+.clean-a
+    text-decoration: none;
+    color: $preto;
+
+.clean-ul
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+.simple-container
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+    min-width: 100px;
+    text-align: center; 
+
+.simple-row
+    display: flex;
+    flex-direction: row;
+    flex-wrap: row wrap;
+
+.simple-col8
+    flex-grow: 8;
+
+.simple-col4
+    flex-grow: 4;
+
+.border-radius
+    border-radius: 7px;
+
+.padding-16
+    padding: 16px !important;
+
+.margin-10
+    margin: 10px !important;
+
+.text-center
+    text-align: center;
+
+.article 
+    border-bottom: 1px solid black
